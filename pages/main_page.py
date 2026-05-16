@@ -1,5 +1,4 @@
 import allure
-from locators.order_feed_locators import OrderFeedLocators
 from pages.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
 from selenium.webdriver.common.action_chains import ActionChains
@@ -22,7 +21,7 @@ class MainPage(BasePage):
     @allure.step("Кликнуть на кнопку 'Лента заказов'")
     def click_to_order_feed(self):
         self.click(self.locators.order_feed)
-        self.wait_visible(OrderFeedLocators.text_order_feed_number)
+        self.wait_invisible(self.locators.constructor_place)
 
     @allure.step("Получить заголовок Соберите бургер")
     def get_title_of_page(self):
@@ -44,9 +43,6 @@ class MainPage(BasePage):
             return True
         except TimeoutError:
             return False
-
-    # def add_ingredient_to_order(self):
-    #     ActionChains(self.driver).drag_and_drop(self.locators.souse , self.locators.constructor_place)
 
     @allure.step("Перетаскиваем ингредиент в зону 'Выбранные ингредиенты'")
     def drag_ingredient_to_constructor(self):
@@ -89,5 +85,3 @@ class MainPage(BasePage):
     @allure.step("Получить номер заказа из модального окна")
     def get_order_number_from_modal(self):
         return self.get_text(self.locators.order_number_modal_title)
-        # element = self.find_element(OrderFeedLocators.order_modal_number)
-        # return element.text

@@ -1,6 +1,5 @@
 import allure
 from locators.forgot_password_locators import ForgotPassword
-from locators.reset_password_locators import ResetPasswordLocators
 from pages.base_page import BasePage
 
 
@@ -27,14 +26,18 @@ class ForgotPage(BasePage):
 
     @allure.step("Кликнуть на кнопку глаза")
     def click_to_eye_button(self):
-        self.clickable(ResetPasswordLocators.eye_icon)
-        self.click(ResetPasswordLocators.eye_icon)
+        self.clickable(self.locators.eye_icon)
+        self.click(self.locators.eye_icon)
+
+    @allure.step("Подождать видимости активного поля пароля")
+    def wait_visible_active_input(self):
+        self.wait_visible(self.locators.active_input)
 
     @allure.step("Получить текст кнопки Сохранить")
     def get_text_of_button_save(self):
-        return self.get_text(ResetPasswordLocators.button_save)
+        return self.get_text(self.locators.button_save)
 
     @allure.step("Проверить, что пароль стал видимым (поле активно)")
     def is_password_field_active(self):
-        active_container = self.find_element(ResetPasswordLocators.active_input)
+        active_container = self.find_element(self.locators.active_input)
         return active_container.is_displayed()

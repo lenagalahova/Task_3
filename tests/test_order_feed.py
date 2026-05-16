@@ -55,7 +55,7 @@ class TestOrderFeed:
 
         with allure.step("Перейти в ленту заказов и запомнить текущий счетчик"):
             main_page.click_to_order_feed()
-            initial_total = order_feed.get_total_orders_count()  # написать метод
+            initial_total = order_feed.get_total_orders_count()
             order_feed.click_to_constructor()
         with allure.step("Добавить булку в заказ и нажать на Войти в аккаунт"):
             main_page.drag_ingredient_to_constructor()
@@ -118,6 +118,6 @@ class TestOrderFeed:
             main_page.click_to_button_close()
         with allure.step("Перейти в Ленту заказов"):
             main_page.click_to_order_feed()
-            order_feed.wait_invisible_text()
+            order_feed.wait_visible_text()
             text = order_feed.get_text_in_work()
             assert order_number in text

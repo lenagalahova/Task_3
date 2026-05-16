@@ -64,5 +64,5 @@ class TestForgotPassword:
             forgot_page.click_to_button_recover()
         with allure.step("Нажать на глазик"):
             forgot_page.click_to_eye_button()
-            time.sleep(3)  # для Mozilы
+            forgot_page.wait_visible(forgot_page.locators.active_input)
             assert forgot_page.is_password_field_active()

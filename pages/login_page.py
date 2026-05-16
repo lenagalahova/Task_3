@@ -1,5 +1,4 @@
 import allure
-from locators.forgot_password_locators import ForgotPassword
 from locators.login_locators import LoginLocators
 from pages.base_page import BasePage
 
@@ -16,11 +15,11 @@ class LoginPage(BasePage):
     @allure.step("Кликнуть на кнопку 'Восстановить пароль'")
     def click_to_forgot_password(self):
         self.click(self.locators.button_forgot_pass)
-        self.wait_visible(ForgotPassword.page_title_reset)
+        self.wait_invisible(self.locators.button_forgot_pass)
 
     @allure.step("Ввести почту")
     def set_email(self, email):
-        self.wait_visible(LoginLocators.button_login)
+        self.wait_visible(self.locators.button_login)
         self.send_keys(self.locators.email_input, email)
 
     @allure.step("Ввести пароль")

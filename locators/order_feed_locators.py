@@ -25,7 +25,10 @@ class OrderFeedLocators:
         './/li[@class = "text text_type_digits-default mb-2"]',
     )
     number_order_in_feed = (By.XPATH, './/p[@class = "text text_type_digits-default"]')
-    text_all_order_ready = (By.XPATH, './/li[@class = "text text_type_main-small"]')
+    text_order_in_work = (
+        By.XPATH,
+        './/ul[contains(@class, "OrderFeed_orderListReady")]//li[contains(@class, "text_type_digits-default")]',
+    )
     order_in_feed = (By.XPATH, '//ul[contains(@class, "OrderFeed")]//li[1]')
     popup_of_order = (
         By.XPATH,

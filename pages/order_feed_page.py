@@ -54,5 +54,5 @@ class OrderFeedPage(BasePage):
         self.wait_visible(self.locators.number_order_in_work)
 
     @allure.step("Подождать появления заказа в ленте")
-    def wait_invisible_text(self):
-        self.wait_invisible(self.locators.text_all_order_ready)
+    def wait_visible_text(self):
+        self.wait_visible(self.locators.text_order_in_work)
